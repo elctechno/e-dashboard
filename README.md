@@ -1,4 +1,4 @@
-## EDashboard
+## WELCOME TO LIBRARY ELC DASHBOAD
 
 Hi this component using vue 3 + typescript.
 
@@ -15,10 +15,8 @@ Hi this component using vue 3 + typescript.
 
 ## Installation
 
-npm install e-dashboard
-
 ```bash
-  npm install e-dashboard
+ install -S github:elctechno/e-dashboard
 
   import { EButton } from 'e-dashboard'
 
