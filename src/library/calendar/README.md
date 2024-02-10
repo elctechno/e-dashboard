@@ -2,9 +2,10 @@
 
 ### API
 
-| Property     | Description                       | Type   | Default |
-| :----------- | :-------------------------------- | :----- | :------ |
-| `selectDate` | Set the date default (YYYY-MM-DD) | String | null    |
+| Property       | Description                               | Type   | Default |
+| :------------- | :---------------------------------------- | :----- | :------ |
+| `selectDate`   | Set the date default (YYYY-MM-DD)         | String | null    |
+| `border-color` | set the color ( primary, secondary, dark) | String | primary |
 
 #### Usage / Examples
 

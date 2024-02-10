@@ -2,20 +2,20 @@
 
 <template>
     <div class="calendar-dropdown">
-        <div class="dropdown" @click="toggleDropdown">
+        <div :class="['dropdown', colorDropdown]" @click="toggleDropdown">
             <span>{{ currentDate ? currentDate.format('D MMMM, YYYY') : placeholder }}</span>
-            <Icon :icon="isOpen ? 'mdi:arrow-dropup' : 'mdi:arrow-dropdown'" />
+            <span><Icon icon="mdi:calendar" /></span>
         </div>
-        <div v-show="isOpen" class="calendar-container">
+        <div v-show="isOpen" :class="['calendar-container', colorCalendar]">
             <div class="calendar">
                 <div class="calendar-header">
                     <button @click="prevYear">&lt;&lt;</button>
                     <button @click="prevMonth">&lt;</button>
                     <div class="month-year-selector">
-                        <select v-model="selectedMonth" @change="updateMonth">
+                        <select v-model="selectedMonth" @change="updateMonth" :class="colorSelect">
                             <option v-for="(month, index) in months" :key="index" :value="index">{{ month }}</option>
                         </select>
-                        <select v-model="selectedYear" @change="updateYear">
+                        <select v-model="selectedYear" @change="updateYear" :class="colorSelect">
                             <option v-for="year in years" :key="year" :value="year">{{ year }}</option>
                         </select>
                     </div>
@@ -47,7 +47,12 @@ export default defineComponent({
         selectedDate: {
             type: String,
             default: '',
-        }
+        },
+        borderColor: {
+            type: String,
+            default: 'primary',
+            validator: (value: string) => ['primary', 'secondary', 'dark'].includes(value),
+        },
     },
     setup(props) {
         const isOpen = ref(false); 
@@ -141,6 +146,18 @@ export default defineComponent({
             return day > 0 && currentDate.value.date() === day;
         };
 
+         const colorDropdown = computed(() => {
+            return `dropdown-${props.borderColor}`
+        })
+
+        const colorCalendar = computed(() => {
+            return `calendar-container-${props.borderColor}`
+        })
+
+         const colorSelect = computed(() => {
+            return `select-${props.borderColor}`
+        })
+
         watch([() => selectedYear.value, () => selectedMonth.value], () => {
             currentDate.value = dayjs().year(selectedYear.value).month(selectedMonth.value).date(1);
         });
@@ -155,7 +172,10 @@ export default defineComponent({
             daysInMonth,
             selectedMonth,
             selectedYear,
+            colorDropdown,
+            colorCalendar,
             toggleDropdown,
+            colorSelect,
             prevYear,
             nextYear,
             prevMonth,
@@ -178,15 +198,26 @@ export default defineComponent({
     .dropdown {
         cursor: pointer;
         display: flex;
+        flex-direction: row;
         justify-content: space-between;
         align-items: center;
-        padding: 10px;
+        gap: 10px;
+        padding: 10px 5px;
         border: 1px solid #ccc;
         border-radius: 5px;
 
-        span {
-            flex-grow: 1;
+        &-primary {
+            border: 1px solid $primary-200;
         }
+
+        &-secondary {
+            border: 1px solid $secondary-200;
+        }
+
+        &-dark {
+            border: 1px solid $dark-100;
+        }
+        
     }
 
     .calendar-container {
@@ -196,10 +227,21 @@ export default defineComponent({
         z-index: 1;
         display: inline-block;
         background-color: #fff;
-        border: 1px solid #ccc;
         border-radius: 5px;
         padding: 10px;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+         &-primary {
+            border: 1px solid $primary-200;
+        }
+
+        &-secondary {
+            border: 1px solid $secondary-200;
+        }
+
+        &-dark {
+            border: 1px solid $dark-100;
+        }
     }
 
     .calendar {
@@ -223,6 +265,8 @@ export default defineComponent({
             &:hover {
                 text-decoration: underline;
             }
+
+            
         }
 
         h2 {
@@ -237,7 +281,24 @@ export default defineComponent({
 
             select {
                 padding: 5px;
+                border-radius: 5px;
                 font-size: 14px;
+            }
+
+            .select {
+
+                &-primary {
+                    border: 1px solid $primary-200;
+                }
+
+                &-secondary {
+                    border: 1px solid $secondary-200;
+                }
+
+                &-dark {
+                    border: 1px solid $dark-100;
+                }
+
             }
         }
     }
@@ -260,12 +321,14 @@ export default defineComponent({
         }
 
         &.selected {
-            background-color: #3498db;
+            background-color: $secondary-300;
+            opacity: 95%;
             color: #fff;
+            
         }
 
         &:hover {
-            background-color: #eee;
+            background-color: $secondary-200;
         }
     }
 }

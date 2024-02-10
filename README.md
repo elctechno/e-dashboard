@@ -1,4 +1,4 @@
-## WELCOME TO LIBRARY ELC DASHBOAD
+## WELCOME TO LIBRARY ELC DASHBOARD
 
 Hi this component using vue 3 + typescript.
 
@@ -16,7 +16,7 @@ Hi this component using vue 3 + typescript.
 ## Installation
 
 ```bash
- npm install -S github:elctechno/e-dashboard
+ npm install -s github:elctechno/e-dashboard
 
   import { EButton } from 'e-dashboard'
 
@@ -54,9 +54,10 @@ Hi this component using vue 3 + typescript.
 
 ### API
 
-| Property     | Description                       | Type   | Default |
-| :----------- | :-------------------------------- | :----- | :------ |
-| `selectDate` | Set the date default (YYYY-MM-DD) | String | null    |
+| Property       | Description                               | Type   | Default |
+| :------------- | :---------------------------------------- | :----- | :------ |
+| `selectDate`   | Set the date default (YYYY-MM-DD)         | String | null    |
+| `border-color` | set the color ( primary, secondary, dark) | String | primary |
 
 #### Usage / Examples
 
