@@ -1,6 +1,6 @@
 {
   "name": "e-dashboard",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "private": false,
   "type": "module",
   "files": [
@@ -22,7 +22,8 @@
     "./dist/my-library-vue-ts.css": {
       "import": "./dist/e-dashboard.css",
       "require": "./dist/e-dashboard.css"
-    }
+    },
+    "./dist/main.d.ts": "./dist/main.d.ts"
   },
   "dependencies": {
     "dayjs": "^1.11.10",
