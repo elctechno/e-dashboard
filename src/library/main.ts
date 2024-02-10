@@ -1,8 +1,8 @@
 import type { App, Plugin } from 'vue';
-import { ECard, ESeparator, ECardGroup } from "@/library/index";
+import { ECard, ESeparator, ECardGroup , EButton, ECalendar, EInput, ESpinner, EDropdown} from "@/library/index";
 import '@/assets/scss/main.scss'
 
-const components = [ ECard, ECardGroup, ESeparator]
+const components = [ ECard, ECardGroup, ESeparator,EButton, ECalendar, EInput, ESpinner, EDropdown]
 
 
 const install = function installFrontendUi(Vue: App ) {
@@ -11,6 +11,6 @@ const install = function installFrontendUi(Vue: App ) {
   });
 };
 
-export { ECard, ECardGroup, ESeparator };
+export { ECard, ECardGroup, ESeparator,EButton, ECalendar, EInput, ESpinner, EDropdown };
 
 export default  install ;
