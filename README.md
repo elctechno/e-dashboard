@@ -16,7 +16,7 @@ Hi this component using vue 3 + typescript.
 ## Installation
 
 ```bash
- install -S github:elctechno/e-dashboard
+ npm install -S github:elctechno/e-dashboard
 
   import { EButton } from 'e-dashboard'
 
